@@ -1,6 +1,6 @@
 # Super simple 2D poly editor for PixiJS
 
-![Alt text](\screenshot.png "Optional Title")
+![Alt text](/screenshot.png "Optional Title")
 
 Run locally with `npm run dev`
 
