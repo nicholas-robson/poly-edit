@@ -88,7 +88,8 @@ app.stage.addChild(imageTitleText);
 const instructionsText = new Text({
   text: `Drag and drop an image to preview
   Click to add a vertex
-  Ctrl + Click to remove a vertex`,
+  Ctrl + Click to remove a vertex
+  Scrollwheel to zoom in/out`,
   style: {
     fill: 0xffffff,
     align: "right",
@@ -324,7 +325,7 @@ view.addEventListener("dragover", onDragOver, false);
 view.addEventListener("dragleave", onDragLeave, false);
 view.addEventListener("drop", onDrop, false);
 
-function loadTexture(sourcePath: string) {
+function loadTexture(fileName, imageData: string) {
   const image = new Image();
 
   image.onload = function () {
@@ -336,13 +337,16 @@ function loadTexture(sourcePath: string) {
       source,
     });
 
+    imageTitleText.text = fileName;
+
     // mainSprite.anchor.set(0.5);
   };
 
-  image.src = sourcePath;
+  image.src = imageData;
 
-  // Cache the `sourcePath` in localStorage:
-  localStorage.setItem("sourcePath", sourcePath);
+  // Cache the `imageData` and `fileName` in localStorage:
+  localStorage.setItem("imageData", imageData);
+  localStorage.setItem("fileName", fileName);
 }
 
 function setFiles(files: FileList) {
@@ -354,17 +358,18 @@ function setFiles(files: FileList) {
       return;
     }
 
-    const sourcePath = e.target.result as string;
-    loadTexture(sourcePath);
+    const imageData = e.target.result as string;
+    loadTexture(file.name, imageData);
   };
   reader.readAsDataURL(file);
 }
 
 // Load cached data from localStorage:
 
-const sourcePath = localStorage.getItem("sourcePath");
-if (sourcePath !== null) {
-  loadTexture(sourcePath);
+const imageData = localStorage.getItem("imageData");
+const fileName = localStorage.getItem("fileName");
+if (imageData !== null && fileName !== null) {
+  loadTexture(fileName, imageData);
 }
 
 const mainPolygonPointsString = localStorage.getItem("mainPolygonPoints");
