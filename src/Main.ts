@@ -325,7 +325,7 @@ view.addEventListener("dragover", onDragOver, false);
 view.addEventListener("dragleave", onDragLeave, false);
 view.addEventListener("drop", onDrop, false);
 
-function loadTexture(fileName, imageData: string) {
+function loadTexture(fileName: string, imageData: string) {
   const image = new Image();
 
   image.onload = function () {

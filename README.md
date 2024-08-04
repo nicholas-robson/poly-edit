@@ -1,11 +1,10 @@
 # Super simple 2D poly editor for PixiJS
 
-- Run locally with `npm run dev`
-- Drag n' drop images to the canvas to start editing.
-- Click to add vertices and Ctrl+Click to remove them.
-- Click export button to log the vertices to the console.
-- Scrollwheel to zoom in/out
+![Alt text](\screenshot.png "Optional Title")
 
+Run locally with `npm run dev`
+
+Some data is cached in localstorage for convenience.
 
 ### Other stuff that might be nice some day
 - Auto-poly from texture
@@ -14,3 +13,4 @@
 - Multi-poly
 - Undo/redo
 - Edit multiple images/polys and export together
+- Load existing polys
