@@ -1,8 +1,9 @@
 # Super simple 2D poly editor for PixiJS
 
-![Alt text](/screenshot.png "Optional Title")
+[Try it out here!](https://nicholas-robson.github.io/poly-edit/)
+[![Alt text](/screenshot.png "Optional Title")](https://nicholas-robson.github.io/poly-edit/)
 
-Run locally with `npm run dev`
+Or clone & run locally with `npm run dev`
 
 Some data is cached in localstorage for convenience.
 
