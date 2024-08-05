@@ -13,6 +13,7 @@ import {
 import { PolyVertex } from "./PolyVertex.ts";
 import { Button } from "./Button.ts";
 import { getClosestEdge } from "./Utility.ts";
+import copy from "copy-to-clipboard";
 
 export async function start() {
   const app = new Application();
@@ -72,15 +73,13 @@ export async function start() {
   );
 
   app.stage.addChild(
-    new Button("Log Polygon (console)", 10, 50, () => {
+    new Button("Copy Polygon (to clipboard)", 10, 50, () => {
       const offset = [mainSprite.width / 2, mainSprite.height / 2];
-      console.log(
-        JSON.stringify(
-          mainPolygon.points.map((point, i) =>
-            Math.round(point + offset[i % 2]),
-          ),
-        ),
+      const data = JSON.stringify(
+        mainPolygon.points.map((point, i) => Math.round(point + offset[i % 2])),
       );
+      copy(data);
+      console.log(data);
     }),
   );
 
